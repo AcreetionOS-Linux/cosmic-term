@@ -1,4 +1,4 @@
- Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kyuzial <kyuzial@protonmail.com>
 pkgname=cosmic-term-git
 pkgver=1.0.0.alpha.3.r6.g1743730
