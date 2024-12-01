@@ -20,21 +20,27 @@ makedepends=(
 )
 provides=("${pkgname%-git}" 'cosmic-terminal')
 conflicts=("${pkgname%-git}" 'cosmic-terminal')
-source=('git+https://github.com/AcreetionOS-Linux/cosmic-term.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            'b83d3403f73ad54363339304bdeca4d36ce11dfa17d5df51cc292d28fa78e824')
+#source=('git+https://github.com/AcreetionOS-Linux/cosmic-term.git'
+#'lto.patch')
 
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=('git+https://github.com/AcreetionOS-Linux/cosmic-term.git')
+
+#sha256sums=('SKIP'
+#            'b83d3403f73ad54363339304bdeca4d36ce11dfa17d5df51cc292d28fa78e824')
+#
+#skipping this for now
+sha256sums=('SKIP')
+
+#pkgver() {
+#  cd "${pkgname%-git}"
+#  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 prepare() {
   cd "${pkgname%-git}"
 
   # Use thin LTO
-  patch -Np1 -i ../lto.patch
+  #patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
